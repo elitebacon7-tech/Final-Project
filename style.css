@@ -1,0 +1,248 @@
+:root {
+  --bg-perfection: #141414;
+  --text-primary-perfection: #F0E6D2;
+  --text-secondary-perfection: #A8A29E;
+  --accent-perfection: #B08D57;
+
+  --bg-improv: #171326;
+  --gold-improv: #E9BD65;
+  --pink-improv: #E78CA8;
+  --blue-improv: #8BA8E8;
+  --teal-improv: #79D6C2;
+  --cream-improv: #F0E6D2;
+
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--bg-perfection);
+  color: var(--text-primary-perfection);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+}
+
+main#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 0;
+}
+
+
+.headline {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem 0;
+  transition: color 1.5s ease;
+  user-select: text;
+  z-index: 5;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--text-secondary-perfection);
+  margin: 0.5rem 0 3rem 0;
+  transition: color 1.5s ease;
+  max-width: 320px;
+  user-select: none;
+  z-index: 5;
+}
+
+
+.btn {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.25rem;
+  background: transparent;
+  border: 2px solid var(--accent-perfection);
+  color: var(--accent-perfection);
+  padding: 0.8em 2em;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.6s ease, color 0.6s ease,
+    border-color 0.6s ease;
+  user-select: none;
+  z-index: 5;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-perfection);
+  color: var(--bg-perfection);
+  outline: none;
+}
+
+
+.staff {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.staff .line {
+  height: 1.5px;
+  background-color: var(--text-secondary-perfection);
+  margin: 8px 0;
+  opacity: 0.15;
+  border-radius: 2px;
+}
+
+
+.notes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  max-width: 600px;
+  list-style: none;
+  margin: 0 0 2rem 0;
+  padding: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+
+.note {
+  font-size: 6rem;
+  color: var(--text-primary-perfection);
+  user-select: none;
+  transition: 
+    transform 2s ease,
+    color 2s ease;
+  animation: pulse 3s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform, color;
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+.perfection #description,
+.perfection .note,
+.perfection .headline {
+  color: var(--text-primary-perfection);
+}
+
+.perfection .description {
+  color: var(--text-secondary-perfection);
+}
+
+
+.note.color-gold {
+  color: var(--gold-improv);
+}
+.note.color-pink {
+  color: var(--pink-improv);
+}
+.note.color-blue {
+  color: var(--blue-improv);
+}
+.note.color-teal {
+  color: var(--teal-improv);
+}
+.note.color-cream {
+  color: var(--cream-improv);
+}
+
+
+.improvisation {
+  background-color: var(--bg-improv);
+  transition: background-color 2s ease;
+}
+
+
+.improvisation .headline {
+  color: var(--cream-improv);
+}
+
+
+.improvisation #description {
+  color: var(--cream-improv);
+}
+
+
+.improvisation .staff {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+
+.improvisation .notes {
+  pointer-events: none;
+  justify-content: flex-start;
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  padding: 0 4vw;
+}
+
+
+.improvisation .note {
+  animation: none;
+  transition: none;
+  position: absolute;
+  user-select: none;
+}
+
+
+
+button:focus-visible {
+  outline: 2px solid var(--accent-perfection);
+  outline-offset: 4px;
+}
